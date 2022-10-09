@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-function FeedbackItem({ item, handleDelete }) {
+function FeedbackItem({ item }) {
   //   const [rating, setRating] = useState(7);
   //   const [text, setText] = useState("This is a FeedbackItem");
 
@@ -10,11 +11,12 @@ function FeedbackItem({ item, handleDelete }) {
   //     });
   //     setText("Now rating is 8");
   //   };
-
+  const { DeleteFeedback, EditFeedback } = useContext(FeedbackContext);
   return (
     <div>
       <div>{item.rating}</div>
-      <button onClick={() => handleDelete(item.id)}>Delete</button>
+      <button onClick={() => DeleteFeedback(item.id)}>Delete</button>
+      <button onClick={() => EditFeedback(item)}>Edit</button>
       <div>{item.text}</div>
       {/* <button onClick={handleClick}>Click</button> */}
     </div>
